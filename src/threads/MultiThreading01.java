@@ -23,20 +23,22 @@ public class Multithreading01 {
 
         Thread thread1=new CounterThread("Selim");
         Thread thread2=new CounterThread("Fatma");
+
         thread1.start();
         thread2.start();
 
+
         //main thread thread1 ve thread2 işini bitirene kadar beklemeli
         try {
-            thread1.join();//thread1 işini bitirene kadar main threadi bekletir
+            thread1.join();//thread1 işini bitirene kadar main threadi(hangi threadin run metodunda çağrılmışsa onu) bekletir
             thread2.join();//thread2 işini bitirene kadar main threadi bekletir
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
-
+//hangi threadin run metodunda çağrılmışsa bu threadi bekletir, çağıran thread işini bitirene kadar
         long finish2=System.currentTimeMillis();
-        System.out.println("Multi thread ile geçen süre: "+(finish2-start2));//10252
+        System.out.println("Multi thread ile geçen süre: "+(finish2-start2));//5132
 
 
 
@@ -94,6 +96,7 @@ class CounterThread extends Thread{
 
     @Override
     public void run() {//threade saydırma işlemi yaptıralım
+
         count();
     }
 }

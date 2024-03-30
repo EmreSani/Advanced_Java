@@ -32,6 +32,13 @@ public class ThreadCreationWays {
               }
 
               System.out.println("Anonim thread uyandı");
+
+              try {
+                  thread2.join();
+              } catch (InterruptedException e) {
+                  throw new RuntimeException(e);
+              }
+
               System.out.println("Anonim thread işini bitirdi");
           }
     });
