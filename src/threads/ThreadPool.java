@@ -7,7 +7,7 @@ public class ThreadPool {
     public static void main(String[] args) {
 
         //az thread ile çok iş
-        ExecutorService service =Executors.newFixedThreadPool(5);
+        ExecutorService service =Executors.newFixedThreadPool(5);//canlı sadece 5 thread
 
         Thread kurye1=new ThreadCreator("A",2000);
         Thread kurye2=new ThreadCreator("B",8000);

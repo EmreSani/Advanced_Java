@@ -16,6 +16,7 @@ public class WaitNotify {
         this.balance+=amount;
         System.out.println("Para yatırma işlemi başarılı, mevcut bakiye : "+this.balance);
         notify();//wait ile bekleyen threade bildirim gönderilir
+       // notifyAll();//wait ile bekleyen tüm threadleri harekete geçirir
     }
 
     //para çekme işlemi
@@ -62,7 +63,7 @@ public class WaitNotify {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
