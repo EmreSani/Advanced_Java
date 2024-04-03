@@ -1,5 +1,10 @@
 package recordtypes.record1;
+
+import java.util.Objects;
+
 /*
+Dataları transfer etmek için:DTO(Data Transefer Object) ve dataları
+saklamak için basit ilkel classlar oluştururuz.
 Bazı durumlarda thread güvenliği(thread-safe), cachede veri tutarlılığı,
 test kolaylığı vb sebeplerle immutable(değiştirilemez) classlar tanımlamak isteyebiliriz.
  */
@@ -39,4 +44,26 @@ public class EmployeeImmutable {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this==obj) return true;
+
+        if (obj==null || this.getClass()!=obj.getClass()){
+            return false;
+        }
+
+        EmployeeImmutable emp= (EmployeeImmutable) obj;
+
+        return Objects.equals(this.firstname,emp.firstname) &&
+                Objects.equals(this.lastname,emp.lastname) &&
+                Objects.equals(this.email,emp.email);
+    }
+
+    //objeler için unique kodlar üretir
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstname,lastname,email);
+    }
+
 }
